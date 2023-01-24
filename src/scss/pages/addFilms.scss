@@ -1,0 +1,46 @@
+.add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  &__label {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    outline: none;
+    border: 1px solid #252525;
+    padding: 12px 16px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  &__error {
+    margin-top: 5px;
+    font-size: 13px;
+    color: rgb(231, 118, 118);
+  }
+
+  &__btn {
+    width: 100%;
+    background: #252525;
+    color: #fff;
+    padding: 12px 16px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+}

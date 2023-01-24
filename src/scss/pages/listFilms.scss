@@ -1,0 +1,47 @@
+.films {
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 50px 0;
+  }
+
+  .film {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 23%;
+    padding: 1%;
+    margin: 1%;
+
+    img {
+      max-width: 200px;
+      max-height: 200px;
+      min-width: 200px;
+      min-height: 200px;
+      object-fit: contain;
+    }
+
+    &__delete {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      margin: 0 15px 15px auto;
+    }
+
+    &__title {
+      font-weight: 500;
+      margin: 15px 0;
+    }
+
+    &__year {
+      font-weight: 400;
+    }
+
+    &__director {
+      font-weight: 600;
+      margin: 15px 0;
+    }
+  }
+}

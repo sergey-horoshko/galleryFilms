@@ -1,0 +1,9 @@
+input::placeholder {
+  transition: 0.3s;
+}
+
+input:focus {
+  &::placeholder {
+    color: transparent;
+  }
+}
