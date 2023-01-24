@@ -30,7 +30,7 @@
       <button class="add__btn" @click="addFilm"> Добавить</button>
     </div>
     <div v-else class="add__success">
-      Режиссер успешно добавлен, перейдите в ваш список фильмов.
+      Режиссер успешно добавлен, перейдите в ваш список режиссеров.
     </div>
   </section>
 </template>
