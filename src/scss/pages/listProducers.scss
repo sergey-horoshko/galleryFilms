@@ -11,9 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 23%;
-    padding: 1%;
-    margin: 1%;
+    width: 25%;
+    padding: 2%;
 
     img {
       max-width: 200px;
@@ -47,6 +46,30 @@
 
     &__genre {
       margin-top: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .producers {
+    .producer {
+      width: 33.3%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .producers {
+    .producer {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .producers {
+    .film {
+      width: 100%;
     }
   }
 }

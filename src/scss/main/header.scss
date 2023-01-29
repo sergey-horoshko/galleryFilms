@@ -31,6 +31,11 @@
     font-size: 16px;
     font-weight: 500;
 
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
     &:before {
       content: '';
       position: absolute;
@@ -49,6 +54,21 @@
         width: 100%;
         opacity: 1;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    &__box {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__item {
+      margin-bottom: 15px;
+      min-width: 200px;
+      text-align: center;
     }
   }
 }

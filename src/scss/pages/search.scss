@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
 
   &__descr {
     margin-bottom: 15px;
@@ -16,6 +17,7 @@
   }
 
   &__content {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -70,11 +72,9 @@
   .card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 23%;
-    padding: 1%;
-    margin: 1%;
+    width: 25%;
+    padding: 2%;
 
     img {
       max-width: 200px;
@@ -91,6 +91,30 @@
 
     &__year {
       font-weight: 400;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .search {
+    .card {
+      width: 33.3%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .search {
+    .card {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .search {
+    .card {
+      width: 100%;
     }
   }
 }

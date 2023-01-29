@@ -28,7 +28,7 @@
         <vue-awesome-paginate
           :total-items="totalResults"
           :items-per-page="10"
-          :max-pages-shown="10"
+          :max-pages-shown="2"
           v-model="currentPage"
           :on-click="searchMore"
         />
@@ -49,6 +49,7 @@ const year = ref('')
 const extended = ref(false)
 
 const search = () => {
+  currentPage.value = 1
   fetch(`http://www.omdbapi.com/?s=${query.value}&y=${year.value}&page=${currentPage.value}&type=movie&apikey=${window.key}`)
       .then((result) => {
         return result.json()
@@ -66,7 +67,7 @@ const search = () => {
 }
 
 const searchMore = () => {
-  fetch(`http://www.omdbapi.com/?s=${query.value}&page=${currentPage.value}&type=movie&apikey=${window.key}`)
+  fetch(`http://www.omdbapi.com/?s=${query.value}&y=${year.value}&page=${currentPage.value}&type=movie&apikey=${window.key}`)
     .then((result) => {
       return result.json()
     })

@@ -11,9 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 23%;
-    padding: 1%;
-    margin: 1%;
+    width: 25%;
+    padding: 2%;
 
     img {
       max-width: 200px;
@@ -42,6 +41,30 @@
     &__director {
       font-weight: 600;
       margin: 15px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .films {
+    .film {
+      width: 33.3%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .films {
+    .film {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .films {
+    .film {
+      width: 100%;
     }
   }
 }
