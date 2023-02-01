@@ -4,43 +4,29 @@
       <img src="../../assets/img/logo.png" alt="">
     </div>
     <div class="header__box">
-      <div class="header__item">
-        <router-link to="/">
-          Список фильмов
-        </router-link>
+      <div class="header__item" @click="selectPage(1)">
+        Список фильмов
       </div>
-      <div class="header__item">
-        <router-link :to="{ name: 'producer'}">
-          Список режиссеров
-        </router-link>
+      <div class="header__item" @click="selectPage(2)">
+        Список режиссеров
       </div>
-      <div class="header__item">
-        <router-link :to="{ name: 'add-producer' }">
-          Добавить режиссера
-        </router-link>
+      <div class="header__item" @click="selectPage(3)">
+        Добавить режиссера
       </div>
-      <div class="header__item">
-        <router-link :to="{ name: 'add-film' }">
-          Добавить фильм
-        </router-link>
+      <div class="header__item" @click="selectPage(4)">
+        Добавить фильм
       </div>
-      <div class="header__item" @click="go()">
-        <a>
-          Поиск
-        </a>
+      <div class="header__item" @click="selectPage(5)">
+        Поиск
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router';
+const emit = defineEmits()
 
-const router = useRouter()
-const route = useRoute()
-
-const go = () => {
-  router.push({name: 'search'})
+const selectPage = (page) => {
+  emit('selectPage', page)
 }
-
 </script>

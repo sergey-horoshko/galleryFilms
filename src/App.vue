@@ -1,20 +1,22 @@
 <template>
-  <Header></Header>
-  <main class="main">
-    <router-view></router-view>
-  </main>
-  <!-- <Main :tabActive="tabActive"></Main> -->
+  <Header @selectPage="changePage"></Header>
+  <Main :tabActive="tabActive"></Main>
   <Footer></Footer>
 </template>
 
 <script setup>
 import Header from "@/components/main/Header.vue";
-// import Main from "@/components/main/Main.vue";
+import Main from "@/components/main/Main.vue";
 import Footer from "@/components/main/Footer.vue";
 import { ref } from "vue";
 
 /* Api Key */
 window.key = "b7266791";
+
+const tabActive = ref(1);
+const changePage = (page) => {
+  tabActive.value = page;
+}
 </script>
 
 <style lang="scss">
