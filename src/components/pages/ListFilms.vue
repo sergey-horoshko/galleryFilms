@@ -1,9 +1,8 @@
 <template>
   <section class="films">
-    <h1>Ваш список фильмов</h1>
-    <spinner :load="loaded"></spinner>
+    <h1>Ваш список фильмов - {{ count }}</h1>
     <div class="films__content">
-      <div v-for="film in films.collection" :key="film.imdbID" class="film">
+      <div v-for="film in films" :key="film.imdbID" class="film">
         <div class="film__delete" :title="film.imdbID" @click="deleteFilm(film.imdbID)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
             <path
@@ -21,44 +20,19 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue';
-import spinner from "@/components/ui/spinner.vue"
+import { useStore } from 'vuex'
+import { onMounted, computed } from 'vue';
 
-const props = defineProps({
-  film: {
-    type: Object,
-    required: false,
-    default: {}
-  }
-});
-
-const films = reactive({
-  collection: []
-});
-const filmsID = ['tt0241527', 'tt0295297', 'tt0304141', 'tt0330373']
-const loaded = ref(false)
+const store = useStore()
 
 onMounted(() => {
-  loadFilms()
+  getFilms()
 }) 
 
-const loadFilms = () => {
-  filmsID.forEach((item) => {
-   fetch(`http://www.omdbapi.com/?i=${item}&apikey=${window.key}`)
-      .then((result) => {
-        return result.json()
-      })
-      .then((result) => {
-        if (result.hasOwnProperty('imdbID')) {
-          loaded.value = true
-          films.collection.push(result)
-        } else {
-          loaded.value = false
-          alert('Ошибка сервера, обратитесь к администратору сайта')
-        }
-      })
-  })
-}
+const films = computed(() => store.state.films)
+const count = computed(() => store.getters.totalFilms)
+const getFilms = () => store.dispatch('getFilms')
+const deleteFilm = (id) => store.dispatch('deleteFilm', id)
 
 const checkImg = (src) => {
   if (src === 'N/A' || src.indexOf('https')) {
@@ -67,19 +41,4 @@ const checkImg = (src) => {
     return src
   }
 }
-
-const deleteFilm = (id) => {
-  films.collection.map((item, index) => {
-    if (item.imdbID === id) {
-      films.collection.splice(index, 1)
-    }
-  })
-}
-
-watch(() => props.film, () => {
-  if (props.film.hasOwnProperty('imdbID')) {
-    checkImg(props.film.Poster)
-    films.collection.push(props.film);
-  }
-});
 </script>

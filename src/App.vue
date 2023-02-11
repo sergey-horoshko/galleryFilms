@@ -3,13 +3,11 @@
   <main class="main">
     <router-view></router-view>
   </main>
-  <!-- <Main :tabActive="tabActive"></Main> -->
   <Footer></Footer>
 </template>
 
 <script setup>
 import Header from "@/components/main/Header.vue";
-// import Main from "@/components/main/Main.vue";
 import Footer from "@/components/main/Footer.vue";
 import { ref } from "vue";
 

@@ -31,14 +31,18 @@
     </div>
     <div v-else class="add__success">
       Режиссер успешно добавлен, перейдите в ваш список режиссеров.
+      <button @click="addMore()" class="add__btn">Добавить еще</button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { useStore } from 'vuex'
+import { reactive, ref, computed } from 'vue'
 
-const emit = defineEmits()
+const store = useStore()
+const add = ref(false)
+const count = computed(() => store.getters.totalProducers)
 
 const film = reactive({
   Title: '',
@@ -47,8 +51,6 @@ const film = reactive({
   Director: '',
   Poster: '',
 })
-
-const add = ref(false)
 
 const error = reactive({
   errorTitle: false,
@@ -60,9 +62,9 @@ const error = reactive({
 
 const addFilm = () => {
   if (checkFilms()) {
-    film.imdbID = '1'
-    emit('addProducer', film)
+    film.imdbID = ++count.value
     add.value = true
+    store.dispatch('addProducer', film)
   }
 }
 
@@ -91,4 +93,16 @@ const checkFilms = () => {
   }
 }
 
+const addMore = () => {
+  reset()
+  add.value = false
+}
+
+const reset = () => {
+  film.Title = ''
+  film.Genre = ''
+  film.Year = ''
+  film.Director = ''
+  film.Poster = ''
+}
 </script>
