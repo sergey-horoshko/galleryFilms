@@ -15,7 +15,8 @@
         <span v-if="error.errorGenre" class="add__error">Заполните поле</span>
       </label>
       <label class="add__label" for="">
-        <input v-model="film.Year" class="add__input" type="text" placeholder="Год фильма"
+        <input v-model="film.Year" class="add__input" type="text" maxlength="4" placeholder="Год фильма"
+               @input="film.Year = film.Year.replace(/[^0-9]/g, '')"
                @focus="error.errorYear = false" 
         >
         <span v-if="error.errorYear" class="add__error">Заполните поле</span>
@@ -27,10 +28,7 @@
         <span v-if="error.errorDirector" class="add__error">Заполните поле</span>
       </label>
       <label class="add__label" for="">
-        <input v-model="film.Poster" class="add__input" type="text" placeholder="Ссылка на картинку"
-               @focus="error.errorPoster = false" 
-        >
-        <span v-if="error.errorPoster" class="add__error">Заполните поле</span>
+        <input v-model="film.Poster" class="add__input" type="text" placeholder="Ссылка на картинку">
       </label>
       <button class="add__btn" @click="addFilm"> Добавить</button>
     </div>
@@ -43,11 +41,10 @@
 
 <script setup>
 import { useStore } from 'vuex'
-import {reactive, ref, computed} from 'vue'
+import { reactive, ref } from 'vue'
 
 const store = useStore()
 const add = ref(false)
-const count = computed(() => store.getters.totalFilms)
 
 const film = reactive({
   Title: '',
@@ -62,12 +59,11 @@ const error = reactive({
   errorGenre: false,
   errorYear: false,
   errorDirector: false,
-  errorPoster: false,
 })
 
 const addFilm = () => {
   if (checkFilms()) {
-    film.imdbID = ++count.value
+    film.imdbID = Math.floor(Math.random() * 10000)
     add.value = true 
     store.dispatch('addFilm', film)
   }
@@ -86,14 +82,11 @@ const checkFilms = () => {
   if (film.Director.length <= 2) {
     error.errorDirector = true
   }
-  if (film.Poster.length <= 2) {
-    error.errorPoster = true
-  }
+
   if (film.Title.length > 2 &&
       film.Genre.length > 2 &&
       film.Year.length > 3 &&
-      film.Director.length > 2 &&
-      film.Poster.length > 2) {
+      film.Director.length > 2 ) {
     return true
   }
 }

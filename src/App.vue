@@ -9,7 +9,6 @@
 <script setup>
 import Header from "@/components/main/Header.vue";
 import Footer from "@/components/main/Footer.vue";
-import { ref } from "vue";
 
 /* Api Key */
 window.key = "b7266791";
