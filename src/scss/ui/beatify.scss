@@ -7,3 +7,15 @@ input:focus {
     color: transparent;
   }
 }
+
+.link {
+  a {
+    width: fit-content;
+    display: block;
+    text-decoration: none;
+    color: #252525;
+    padding-bottom: 2px;
+    margin: 10px auto 25px;
+    border-bottom: 1px dashed #252525;
+  }
+}

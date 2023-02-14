@@ -1,6 +1,11 @@
 <template>
   <section class="producers">
     <h1>Ваш список режиссеров - {{ count }}</h1>
+    <div class="link">
+      <router-link to="add-producer">
+        Добавить режиссера
+      </router-link>
+    </div>
     <div class="producers__content">
       <div v-for="film in films" :key="film.imdbID" class="producer">
         <div class="producer__delete" :title="film.imdbID" @click="deleteProducer(film.imdbID)">

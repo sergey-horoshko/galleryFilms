@@ -14,7 +14,7 @@
           Список режиссеров
         </router-link>
       </div>
-      <div class="header__item">
+      <!-- <div class="header__item">
         <router-link :to="{ name: 'add-producer' }">
           Добавить режиссера
         </router-link>
@@ -23,7 +23,7 @@
         <router-link :to="{ name: 'add-film' }">
           Добавить фильм
         </router-link>
-      </div>
+      </div> -->
       <div class="header__item" @click="go()">
         <a>
           Поиск

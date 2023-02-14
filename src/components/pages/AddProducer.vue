@@ -1,6 +1,11 @@
 <template>
   <section class="add">
     <h1 v-if="!add">Добавить режиссера</h1>
+    <div class="link">
+      <router-link to="producer">
+        Список режиссеров
+      </router-link>
+    </div>
     <div v-if="!add" class="add__form">
       <label class="add__label" for="">
         <input v-model="film.Director" class="add__input -error" type="text" placeholder="Режиссер"

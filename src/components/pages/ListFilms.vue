@@ -1,6 +1,11 @@
 <template>
   <section class="films">
     <h1>Ваш список фильмов - {{ count }}</h1>
+    <div class="link">
+      <router-link to="add-film">
+        Добавить фильм
+      </router-link>
+    </div>
     <div class="films__content">
       <div v-for="film in films" :key="film.imdbID" class="film">
         <div class="film__delete" :title="film.imdbID" @click="deleteFilm(film.imdbID)">

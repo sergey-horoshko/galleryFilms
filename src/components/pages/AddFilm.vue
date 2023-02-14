@@ -1,6 +1,11 @@
 <template>
   <section class="add">
     <h1 v-if="!add">Добавить фильм</h1>
+    <div class="link">
+      <router-link to="/">
+        Список фильмов
+      </router-link>
+    </div>
     <div v-if="!add" class="add__form">
       <label class="add__label" for="">
         <input v-model="film.Title" class="add__input" type="text" placeholder="Название фильма"
