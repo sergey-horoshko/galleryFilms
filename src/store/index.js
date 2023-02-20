@@ -15,7 +15,7 @@ export default createStore({
 		},
 
 		add_film(state, film) {
-			state.films.push(film);
+			state.films.push(JSON.parse(JSON.stringify(film)));
 		},
 
 		delete_producer(state, id) {
@@ -25,7 +25,7 @@ export default createStore({
 		},
 
 		add_producer(state, producer) {
-			state.producers.push(producer);
+			state.producers.push(JSON.parse(JSON.stringify(producer)));
 		},
 	},
 
