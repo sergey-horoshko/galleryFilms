@@ -2,30 +2,36 @@ import { createStore } from "vuex";
 
 export default createStore({
 	state: {
-		films: [],
-		filmsID: ["tt0241527", "tt0295297", "tt0304141", "tt0330373"],
-		producers: [],
-		producersID: ["tt0241527", "tt0304141", "tt0330373"],
+		films: {
+			data: [],
+			filmsID: ["tt0241527", "tt0295297", "tt0304141", "tt0330373"],
+		},
+		producers: {
+			data: [],
+			producersID: ["tt0241527", "tt0304141", "tt0330373"],
+		},
 	},
 
 	/* Синхронные функции */
 	mutations: {
 		delete_film(state, id) {
-			state.films = state.films.filter((item) => item.imdbID !== id);
+			state.films.data = state.films.data.filter(
+				(item) => item.imdbID !== id
+			);
 		},
 
 		add_film(state, film) {
-			state.films.push(JSON.parse(JSON.stringify(film)));
+			state.films.data.push(JSON.parse(JSON.stringify(film)));
 		},
 
 		delete_producer(state, id) {
-			state.producers = state.producers.filter(
+			state.producers.data = state.producers.data.filter(
 				(item) => item.imdbID !== id
 			);
 		},
 
 		add_producer(state, producer) {
-			state.producers.push(JSON.parse(JSON.stringify(producer)));
+			state.producers.data.push(JSON.parse(JSON.stringify(producer)));
 		},
 	},
 
@@ -33,8 +39,8 @@ export default createStore({
 	actions: {
 		/* Получение фильмов */
 		getFilms(state) {
-			if (state.state.films.length < 1) {
-				state.state.filmsID.forEach((item) => {
+			if (state.state.films.data.length < 1) {
+				state.state.films.filmsID.forEach((item) => {
 					fetch(
 						`http://www.omdbapi.com/?i=${item}&apikey=${window.key}`
 					)
@@ -43,7 +49,7 @@ export default createStore({
 						})
 						.then((result) => {
 							if (result.hasOwnProperty("imdbID")) {
-								state.state.films.push(result);
+								state.state.films.data.push(result);
 							} else {
 								alert(
 									"Ошибка сервера, обратитесь к администратору сайта"
@@ -66,8 +72,8 @@ export default createStore({
 
 		/* Получение режиссеров */
 		getProducers(state) {
-			if (state.state.producers.length < 1) {
-				state.state.producersID.forEach((item) => {
+			if (state.state.producers.data.length < 1) {
+				state.state.producers.producersID.forEach((item) => {
 					fetch(
 						`http://www.omdbapi.com/?i=${item}&apikey=${window.key}`
 					)
@@ -76,7 +82,7 @@ export default createStore({
 						})
 						.then((result) => {
 							if (result.hasOwnProperty("imdbID")) {
-								state.state.producers.push(result);
+								state.state.producers.data.push(result);
 							} else {
 								alert(
 									"Ошибка сервера, обратитесь к администратору сайта"
@@ -99,13 +105,13 @@ export default createStore({
 	},
 	getters: {
 		totalFilms(state) {
-			if (state.films.length > 0) {
-				return state.films.length;
+			if (state.films.data.length > 0) {
+				return state.films.data.length;
 			}
 		},
 		totalProducers(state) {
-			if (state.producers.length > 0) {
-				return state.producers.length;
+			if (state.producers.data.length > 0) {
+				return state.producers.data.length;
 			}
 		},
 	},

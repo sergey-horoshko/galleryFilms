@@ -34,7 +34,7 @@ onMounted(() => {
   getProducers()
 })
 
-const films = computed(() => store.state.producers)
+const films = computed(() => store.state.producers.data)
 const count = computed(() => store.getters.totalProducers)
 const getProducers = () => store.dispatch('getProducers')
 const deleteProducer = (id) => store.dispatch('deleteProducer', id)
