@@ -1,6 +1,6 @@
 # my-films
 
-This template should help get you started developing with Vue 3 in Vite.
+This project should help get you started developing with Vue 3, VueRouter, Vuex and Vite.
 
 ## https://sergey-horoshko.github.io/galleryFilms/
 
