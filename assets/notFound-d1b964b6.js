@@ -1,0 +1,1 @@
+import{_ as e,a as o,b as t,d as n}from"./index-e0410150.js";const c={},s=n("h1",null,"К сожалению, страница не найдена",-1),_=[s];function a(r,d){return o(),t("div",null,_)}const f=e(c,[["render",a]]);export{f as default};
